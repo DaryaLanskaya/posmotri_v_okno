@@ -82,13 +82,12 @@ fieldset {
 .search-form__pseudo-checkbox::before {
     content: "";
     display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 15px;
     height: 15px;
     background-color: #fff;
+    margin: auto;
+    position: relative;
+    top: 1px;
 }
 
 .search-form__checkbox.visually-hidden:checked + .search-form__pseudo-checkbox::before{
