@@ -9,17 +9,19 @@ html {
 }
 
 :root {
-    --font-family: "Fira Sans Condensed", sans-serif;
-    --second-family: "Oswald", sans-serif;
+    --primary-font-family: "Fira Sans Condensed", sans-serif;
+    --secondary-font-family: "Oswald", sans-serif;
 }
 
 .page {
     inline-size: 1200px;
     block-size: 100%;
+    display: flex;
+    align-items: center;
     margin: auto;
     background-color: #1b1919;
     font-size: 18px;
-    font-family: var(--font-family);
+    font-family: var(--primary-font-family);
     color: #fff;
 }
 
@@ -42,14 +44,10 @@ ol {
     list-style: none;
 }
 
-.page {
-    display: flex;
-    align-items: center;
-}
-
 .content {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     gap: 30px;
 }
 
@@ -59,13 +57,17 @@ ol {
     align-items: flex-end;
 }
 
-fieldset {
+.search-form__fieldset {
     min-width: 226px;
     border: none;
 }
 
+.search-form__fieldset:nth-child(2) {
+    margin: 0 0 3px 10px;
+}
+
 .search-form__fieldset-title {
-    margin-bottom: 5px;
+    margin-block-end: 2px;
     font-size: 18px;
     font-weight: 400;
 }
@@ -79,19 +81,15 @@ fieldset {
     border: 1px solid #fff;
 }
 
-.search-form__pseudo-checkbox::before {
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before{
     content: "";
-    display: none;
-    width: 15px;
-    height: 15px;
-    background-color: #fff;
-    margin: auto;
+    display: block;
     position: relative;
     top: 1px;
-}
-
-.search-form__checkbox.visually-hidden:checked + .search-form__pseudo-checkbox::before{
-    display: block;
+    width: 15px;
+    height: 15px;
+    margin: auto;
+    background-color: #fff;
 }
 
 .search-form__checkbox-list {
@@ -99,15 +97,10 @@ fieldset {
 }
 
 .search-form__label {
+    inline-size: 100%;
     display: inline-flex;
-    width: 100%;
-    padding: 2px;
-    border: 1px solid transparent;
     align-items: center;
-}
-
-.search-form__label:hover {
-    cursor: pointer;
+    border: 1px solid transparent;
 }
 
 .search-form__label:hover .search-form__label-text {
@@ -119,53 +112,43 @@ fieldset {
 } 
 
 .search-form__label:focus-visible {
-    outline: none;
-    border: 1px solid #fff;
+    outline: 1px solid #fff;
 } 
 
-.search-form__label:not(:last-child) {
-    margin-right: 15px;
-}
-
-input[name="city"] {
-    margin: 2px;
-    border-top: 1px solid #fff;
-    border-right: 1px solid transparent;
-    border-bottom: 1px solid #fff;
-    border-left: 1px solid transparent;
-    font-size: 18px;
-    font-family: var(--font-family);
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-input[name="city"]:hover {
-    cursor: text;
-}
-
-input[name="city"]:active {
+.search-form__label:has([type="checkbox"]:focus-visible) {
     border: 1px solid #fff;
+}
+
+.search-form__label:not(:last-child) {
+    margin-right:13px;
 }
 
 .search-form__textfield {
     appearance: none;
     flex-grow: 1;
-    padding: 2px 0;
+    margin: 2px;
+    padding: 1px 2px;
     background-color: transparent;
     border: none;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    font-size: 18px;
+    font-family: var(--primary-font-family);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-form__textfield:hover {
+    cursor: text;
 }
 
 .search-form__textfield:focus {
     outline: none;
 }
 
-input[name="city"]:active {
+.search-form__textfield:active {
     border-right: 1px solid #fff;
     border-left: 1px solid #fff;
-}
-
-.search-form__textfield:has(:focus-visible) {
-    outline: auto;
 }
 
 .search-form__textfield::placeholder {
@@ -184,7 +167,7 @@ input[name="city"]:active {
     background-color: transparent;
     border: 1px solid #fff;
     font-size: 18px;
-    font-family: var(--font-family);
+    font-family: var(--primary-font-family);
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -200,8 +183,7 @@ input[name="city"]:active {
 }
 
 .button:focus-visible {
-    outline: 1px solid #fff;
-    border: 1px solid #fff;
+    outline: 1px double #fff;
 }
 
 .search-form__submit-button {
@@ -225,24 +207,17 @@ input[name="city"]:active {
 .result {
     flex: 0 0 711px;
     width: 711px;
-    margin-top: 82px;
 }
 
 .result__video {
     object-fit: cover;
-    width: auto;
-    min-width: 100%;
+    width: 100%;
     height: 382px;
-    min-height: auto;
-}
-
-.result__video:hover {
     cursor: pointer;
 }
 
 .result__video-container {
     position: relative;
-    overflow: hidden;
     width: 100%;
     margin-bottom: 16px;
 }
@@ -253,18 +228,28 @@ input[name="city"]:active {
 }
 
 .title {
-    margin-bottom: 26px;
+    margin-bottom: 15px;
+    font-size: 75px;
+    font-family: var(--secondary-font-family);
+    font-weight: 700;
+    line-height: 0.94;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.content__accent {
+    color: #545050;
 }
 
 .content__list {
     position: relative;
     overflow-y: auto;
-    max-height: 298px;
+    max-height: 305px;
 }
 
-.content__list-item:hover .content__video-card-description-container {
+.content__card-link:hover {
     text-decoration: underline;
-}
+} 
 
 .content__list-item:not(:last-child) {
     margin-bottom: 30px;
@@ -296,26 +281,34 @@ input[name="city"]:active {
     gap: 10px;
 }
 
-.content__video-card:active {
+.content__card-link:active {
     background: #545050;
 }
 
 .content__video-card-description-container {
     flex-grow: 1;
-    padding: 2px 5px;
+    padding: 2px 1px;
 }
 
 .content__video-card-title {
+    overflow: hidden;
+    width: 200px;
     margin-bottom: 6px;
     font-size: 30px;
-    font-family: var(--second-family);
+    font-family: var(--secondary-font-family);
     font-weight: 700;
     line-height: 1;
     text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .content__video-card-description {
+    overflow: hidden;
+    width: 200px;
     line-height: 0.9;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .content__video-card-thumbnail {
@@ -325,16 +318,4 @@ input[name="city"]:active {
     max-height: 103px;
 }
 
-.title {
-    font-size: 75px;
-    font-family: var(--second-family);
-    font-weight: 700;
-    line-height: 0.94;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.content__accent {
-    color: #545050;
-}
 
