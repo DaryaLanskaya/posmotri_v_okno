@@ -18,7 +18,7 @@ html {
     block-size: 100%;
     display: flex;
     align-items: center;
-    margin: auto;
+    /* margin: auto; */
     background-color: #1b1919;
     font-size: 18px;
     font-family: var(--primary-font-family);
@@ -235,6 +235,7 @@ ol {
     line-height: 0.94;
     color: #fff;
     text-transform: uppercase;
+    /* font-family: "Oswald" sans-serif; */
 }
 
 .content__accent {
@@ -318,4 +319,6 @@ ol {
     max-height: 103px;
 }
 
-
+.search-form__label:hover {
+text-decoration: none;
+}
